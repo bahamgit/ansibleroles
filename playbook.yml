@@ -3,7 +3,7 @@
 - name: set up and run packer
   hosts: localhost
   vars_files:
-    - /home/user-ansible/ansibleroles
+    - /home/user-ansible/ansibleroles/vars.yml
   remote_user: user-ansible
   become: yes
   ignore_errors: yes
