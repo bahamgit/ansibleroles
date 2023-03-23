@@ -9,7 +9,7 @@
     defdistro: debian
   when: tmpdistro == 'debian11net'
 
-- name: setting distro fact
+- name: setting distro fact to ubuntu
   ansible.builtin.set_fact:
     defdistro: ubuntu
   when: tmpdistro == 'ubuntuServ2204'
