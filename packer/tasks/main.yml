@@ -1,0 +1,42 @@
+---
+# tasks file for packer
+
+- name: custom user-data 
+  ansible.builtin.template:
+    src: /root/ansibleroles/packer/templates/user-data.j2
+    dest: /var/www/html/user-data
+  when: defdistro == 'ubuntu'
+
+- name: custom preseed 
+  ansible.builtin.template:
+    src: /root/ansibleroles/packer/templates/preseed.cfg.j2
+    dest: /var/www/html/preseed.cfg
+  when: defdistro == 'debian'
+
+- name: touch meta-data 
+  ansible.builtin.file:
+    path: /var/www/html/meta-data
+    state: touch
+  when: defdistro == 'ubuntu'
+
+- name: custom script
+  ansible.builtin.template:
+    src: /root/ansibleroles/packer/templates/script.sh.j2
+    dest: /root/ansibleroles/packer/files/script.sh
+  when: defdistro == 'debian' or defdistro == 'ubuntu'
+
+- name: custom packer builder
+  ansible.builtin.template:
+    src: "/root/ansibleroles/packer/templates/packerVM{{ defdistro }}.pkr.hcl.j2"
+    dest: "/root/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
+    owner: root
+    group: root 
+    mode: '0600'
+
+- name: "packer shell commands"
+  ansible.builtin.command: "/usr/bin/packer build -on-error=abort /root/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
+
+- name: Sleep for 30 seconds and continue with play
+  ansible.builtin.wait_for: 
+    timeout: 30
+

@@ -1,0 +1,57 @@
+# VM General Settings
+nodePKR: "qhloud"
+vm_idPKR: 1010
+vm_namePKR: "vm-packer"
+template_descriptionPKR: "Jure ca marche ?!"
+
+#VM OS Settings
+iso_storage_poolPKR1: "local"
+iso_filePKR1: "{{ iso_storage_poolPKR1  }}:iso/{{ distroiso }}.iso"
+
+#VM Disk
+disk_sizePKR1: "40G"
+storage_poolPKR1: "local"
+
+#VM cloudinit
+cloudinitfilePKR: "/root/ansibleroles/packer/files/user-data"
+meta_dataPKR: "/root/ansibleroles/packer/files/meta-data"
+iso_storage_poolPKR2: "local"
+cloud_init_storage_poolPKR: "local"
+
+#VM Hardware
+cpuPKR: "4"
+memoryPKR: "8192"
+#VM NetworkCard
+bridgePKR: "vmbr2"
+    
+#Networking
+ipPKR: "10.0.0.111"
+gwPKR: "10.0.0.254"
+maskPKR: "255.255.255.0"
+dnsPKR: "10.0.0.254"
+hostnamePKR: "songoku"
+
+#Identity
+userPKR: "administrator"
+mdpPKR: "deb"
+mdpCryptPKR: "$6$OhpXTzKG7IsH2C6G$jbeM9LzjSvABftmYUwCSyO6Szts7pJQodWACL3EDrGfYwV4C/6H/9TEDCu2SArviHZVBrsVWEjDn.MQL8ZUwl."
+
+#SSH
+sshUserPKR: "administrator"
+sshMdpPKR: "{{ mdpPKR  }}"
+sshHostPKR: "10.0.0.111"
+sshPortPKR: "22"
+sshCertPKR: "~/.ssh/id_rsa.pub"
+sshPubPKR: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCG4BENyc53hqaILHpFr9T8niHWiIBQgIYezjTzWXsHmZNSjEB9E8YJiZBaZIXZp73zwxO7yUd1nk5/dljaVXSNihZ6s/FUWZiD5K1ALFM2EOBjBq26ebP9D/U0GvoSuOF4MFYj/SwtSC8/gp6SHdUf/DgiVl6Qp239WFCuR7g4ZR25BE3xhNVwq9BvSC3mnpi3v1FUru3l9K5zEvr6b5gHi/spEEf3ueJZf9CCTrx/BJVQYRmTTTYlolSwAzimblIiZ60FBKK6bQ8UmpnlS46x6uzMz8CN/vFDKwbJiAd6aHh3Qn51VyDph/g+10PBRt+87YIs7xbwj67FArB8OkU9a5rTuuVcOMuOqrkGt3s82HhaypPZ3eONGhR5i4jNnS7cUBBQtwYJp4R1JrYVQzby0sDXXroIQeiQesjAvrfYRHkdlV6RYf+IJ3k8oQT2h7FKGkPuU3X74Xodz92CiwYmn5VkqZvk8jUsWFknLv0KoGmE1w8HdWgh4mk8S2sqWYc= root@packerAnsible"
+
+#Other
+scriptPKR1: "/root/ansibleroles/packer/files/script.sh"
+
+
+#VM variables
+encryptedPasswordVM: "$6$OhpXTzKG7IsH2C6G$jbeM9LzjSvABftmYUwCSyO6Szts7pJQodWACL3EDrGfYwV4C/6H/9TEDCu2SArviHZVBrsVWEjDn.MQL8ZUwl."
+hostnameVM: "{{ hostnamePKR }}"
+CIDR: "10.0.0.111/24"
+
+# Responsable
+responsableVM: "jeanjacques"

@@ -1,0 +1,13 @@
+---
+# tasks file for configureHostname
+
+- name: new hostname
+  ansible.builtin.hostname:
+    name: "{{ hostnameVM }}" 
+- name: hosts
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: "0644"

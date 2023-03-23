@@ -1,0 +1,8 @@
+---
+# tasks file for removeLv
+- name: "removing lv_unassigned"
+  ansible.builtin.lvol:
+    vg: vg_system
+    lv: lv_unassigned
+    state: absent
+    force: yes

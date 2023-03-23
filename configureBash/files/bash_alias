@@ -1,0 +1,21 @@
+if [[ "$(readlink /proc/$$/exe)" =~ "bash" ]]; then
+    alias ls="ls --color=auto";
+    alias ll="ls $LS_OPTIONS -alh";
+    alias dir="dir --color=auto";
+    alias rm="rm -i";
+    alias cp="cp -i";
+    alias mv="mv -i";
+    alias ln="ln -i";
+    alias mkdir="mkdir -pv";
+    alias grep="grep --color=auto";
+    alias egrep="egrep --color=auto";
+    alias fgrep="fgrep --color=auto";
+    alias df="df -Th";
+    [[ $(command -v "ccze") ]] && alias ccze="ccze -A";
+    [[ $(command -v "colordiff") ]] && alias diff="colordiff";
+    alias path="echo -e ${PATH}";
+    alias now="date +'%d-%m-%Y %T'";
+    alias free="free -mt";
+    alias rsync="rsync -P";
+    alias dmesg="dmesg -T";
+fi

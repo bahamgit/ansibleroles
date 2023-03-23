@@ -1,0 +1,7 @@
+---
+# handlers file for configureResolveD
+
+- name: restarting resolved
+  ansible.builtin.systemd:
+    name: systemd-resolved.service
+    state: restarted

@@ -1,0 +1,21 @@
+---
+# tasks file for createAdminUser
+
+- name: "is the admin user configured ?"
+  ansible.builtin.user:
+    name: admin
+    shell: /bin/bash
+    groups: sudo
+    password: "{{ encryptedPasswordVM }}"
+    append: true
+
+- name: "has the administrator user been removed ?"
+  ansible.builtin.user:
+    name: administrator
+    state: absent
+    remove: yes
+
+- name: "has administrator's sudoers file been removed"
+  ansible.builtin.file:
+    path: /etc/sudoers.d/administrator
+    state: absent

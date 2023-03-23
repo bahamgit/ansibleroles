@@ -1,0 +1,16 @@
+if filereadable("{{ vimNumber.stdout }}defaults.vim")
+    source {{ vimNumber.stdout }}defaults.vim
+endif
+" now set the line that the defaults file is not reloaded afterwards!
+let g:skip_defaults_vim = 1
+" turn off mouse
+set mouse=
+" disable continuation of comments in newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" enable syntax
+syntax on
+" set color scheme
+set t_Co=256
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai

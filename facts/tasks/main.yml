@@ -1,0 +1,15 @@
+---
+# tasks file for facts
+- name: setting facts
+  ansible.builtin.set_fact:
+    tmpdistro: "{{ distroiso }}"
+
+- name: setting distro fact to debian
+  ansible.builtin.set_fact:
+    defdistro: debian
+  when: tmpdistro == 'debian11net'
+
+- name: setting distro fact
+  ansible.builtin.set_fact:
+    defdistro: ubuntu
+  when: tmpdistro == 'ubuntuServ2204'

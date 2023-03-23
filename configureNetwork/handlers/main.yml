@@ -1,0 +1,22 @@
+---
+# handlers file for configureNetwork
+
+- name: restart networkd
+  ansible.builtin.systemd:
+    name: systemd-networkd.service
+    state: restarted
+  listen: restart networkd services
+
+- name: restart networkd
+  ansible.builtin.systemd:
+    name: systemd-resolved.service
+    state: restarted
+  listen: restart networkd services
+
+- name: apply sysctl new configuration
+  ansible.builtin.command: sysctl -p "/etc/sysctl.d/70-ipv6.conf"
+  
+- name: restart networking
+  ansible.builtin.systemd:
+    name: networking.service
+    state: restarted

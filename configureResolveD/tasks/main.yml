@@ -1,0 +1,17 @@
+---
+# tasks file for configureResolveD
+
+- name: configure postfix
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: '^#DNSStubListener=.*'
+    line: DNSStubListener=no
+  notify: restarting resolved
+
+
+- name: configure postfix
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/resolved.conf
+    regexp: '^#LLMNR=.*'
+    line: LLMNR=no
+  notify: restarting resolved

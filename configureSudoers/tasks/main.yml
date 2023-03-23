@@ -1,0 +1,11 @@
+---
+# tasks file for configureSudoers
+
+- name: creating /etc/sudoers.d/admin
+  ansible.builtin.copy:
+    src: admin
+    dest: /etc/sudoers.d/admin
+    owner: root
+    group: root
+    mode: '0440'
+  when: ansible_os_family == 'Debian'

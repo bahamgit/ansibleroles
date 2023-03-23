@@ -1,0 +1,7 @@
+---
+# tasks file for sharedfacts
+
+- name: Share vm facts with hypervisor
+  ansible.builtin.set_fact:
+    interfaceNetworkVM: "{{ hostvars.vm.ansible_default_ipv4.interface }}"
+    osVM: "{{ hostvars.vm.ansible_distribution }} {{ hostvars.vm.ansible_distribution_release}} {{ hostvars.vm.ansible_distribution_version }}"

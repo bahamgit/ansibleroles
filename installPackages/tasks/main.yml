@@ -1,0 +1,63 @@
+---
+# tasks file for installPackages
+
+- name: "are standard packages installed ?"
+  ansible.builtin.apt:
+    name:
+      - microcode.ctl 
+      - irqbalance 
+      - postfix 
+      - sysstat 
+      - parted 
+      - lsscsi
+      - strace
+      - mlocate
+      - apt-utils
+      - cifs-utils
+      - psmisc
+      - lsof
+      - ncdu
+      - tree
+      - tldr
+      - colordiff
+      - rsync
+      - screen
+      - zip 
+      - unzip 
+      - git 
+      - bind9-utils 
+      - net-tools 
+      - curl
+      - whois
+      - telnet
+      - nmap 
+      - netcat
+      - tcpdump
+      - htop
+      - iotop
+      - iftop
+      - ifstat 
+      - iputils* 
+      - iperf3 
+      - file
+      - wget
+      - vim 
+      - rsyslog
+      - chrony 
+      - ccze
+      - build-essential
+      - open-vm-tools
+      - qemu-guest-agent
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: "is cockpit installed in its latest version ?"
+  ansible.builtin.apt:  
+    name:
+      - cockpit 
+      - cockpit-storaged
+    state: latest
+    update_cache: yes
+  notify: disable networkmanager
+  when: ansible_os_family == 'Debian'

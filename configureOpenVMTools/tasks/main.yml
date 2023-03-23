@@ -1,0 +1,14 @@
+---
+# tasks file for configureOpenVMTools
+
+- name: "is vmtools installed in its latest version ?"
+  ansible.builtin.apt:
+    name: open-vm-tools
+    state: latest
+    update_cache: true
+
+- name: "is vmtools enabled ?"
+  ansible.builtin.service:
+    name: open-vm-tools
+    state: started
+    enabled: true

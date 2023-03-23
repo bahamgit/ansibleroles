@@ -1,0 +1,276 @@
+### localization
+d-i debian-installer/locale string en_US.UTF-8
+d-i debian-installer/language string en
+d-i debian-installer/country string FR
+# additional locales
+# d-i localechooser/supported-locales multiselect LOCALE
+# d-i keyboard-configuration/xkb-keymap select fr(latin9)
+d-i keyboard-configuration/xkb-keymap select en
+
+### network
+d-i netcfg/enable boolean true
+d-i netcfg/disable_autoconfig boolean true
+# d-i netcfg/choose_interface select DEFAULT_INTERFACE
+# d-i netcfg/get_hostname string HOSTNAME
+# d-i netcfg/get_domain string DOMAIN
+# d-i netcfg/get_ipaddress string IPADDRESS
+# d-i netcfg/get_netmask string NETMASK
+# d-i netcfg/get_gateway string GATEWAY
+# d-i netcfg/get_nameservers string NAMESERVERS
+# d-i netcfg/confirm_static boolean true
+# d-i netcfg/wireless_wep string
+
+### firmware
+d-i hw-detect/load_firmware boolean true
+
+### mirrors
+d-i mirror/country string manual
+d-i mirror/http/hostname string deb.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+d-i mirror/suite string stable
+
+### accounts
+#d-i passwd/root-password password deb
+#d-i passwd/root-password-again password deb
+#d-i passwd/make-user boolean true
+#d-i passwd/user-fullname string deb
+#d-i passwd/username string deb
+#d-i passwd/user-password-crypted password $6$0LpEk/c40jHBcxpl$rtEB0EY2MwTadHVAwcPGN1UX8B1jLeEKWQHW4scEzIAPvXxrPS4k2OUZ8qmkeuCfi1BK1hqr/DeuSD8ZUL70k/
+d-i passwd/root-login boolean false
+d-i passwd/user-fullname string administrator
+d-i passwd/username string administrator
+d-i passwd/user-password-crypted password $6$0LpEk/c40jHBcxpl$rtEB0EY2MwTadHVAwcPGN1UX8B1jLeEKWQHW4scEzIAPvXxrPS4k2OUZ8qmkeuCfi1BK1hqr/DeuSD8ZUL70k/
+
+
+
+### time
+d-i clock-setup/utc boolean true
+# d-i clock-setup/ntp boolean true
+# d-i clock-setup/ntp-server string NTP_SERVER
+d-i time/zone string Europe/Paris
+
+### partitioning
+# d-i partman-auto/method string METHOD
+# d-i partman-auto/disk string USE_DISKS
+# d-i partman-auto-lvm/new_vg_name string VG_NAME
+# d-i partman-auto-lvm/no_boot boolean true
+# d-i partman-basicfilesystems/no_swap boolean NO_SWAP
+# d-i partman-lvm/device_remove_lvm boolean REMOVE_PREVIOUS_LVM
+# d-i partman-md/device_remove_md boolean REMOVE_PREVIOUS_MD
+# d-i partman-partitioning/confirm_write_new_label boolean true
+# d-i partman/choose_partition select finish
+# d-i partman/confirm boolean true
+# d-i partman-lvm/confirm boolean true
+# d-i partman-md/confirm boolean true
+# d-i partman/confirm_nooverwrite boolean true
+# d-i partman-lvm/confirm_nooverwrite boolean true
+# d-i partman-md/confirm_nooverwrite boolean true
+# d-i partman-basicmethods/method_only boolean false
+
+# d-i partman-auto/disk string /dev/sda
+# d-i partman-auto/method string lvm
+# d-i partman-auto/purge_lvm_from_device boolean true
+# d-i partman-auto/choose_recipe select boot-root
+# d-i partman-auto-lvm/new_vg_name string vg_system
+# 
+# d-i partman-auto/expert_recipe string \
+# boot-root ::\
+# 1074 50 1074 xfs\
+# $primary{ } $bootable{ } \
+# method{ format } format{ } \
+# use_filesystem{ } filesystem{ xfs }\
+# device{ /dev/sda } \
+# mountpoint{ /boot }\
+# . \
+# 5369 50 5369 xfs \
+# $defaultignore{ } \
+# $lvmok{ } \
+# in_vg{ vg_system } \
+# device{ /dev/sda } \
+# lv_name{ lv_system } \
+# method{ format }\
+# format{ } \
+# use_filesystem{ } \
+# filesystem{ xfs }\
+# mountpoint{ / } \
+# .\
+# 5369 50 5369 xfs \
+# $defaultignore{ } \
+# $lvmok{ } \
+# in_vg{ vg_system } \
+# device{ /dev/sda } \
+# lv_name{ lv_var } \
+# method{ format }\
+# format{ } \
+# use_filesystem{ } \
+# filesystem{ xfs }\
+# mountpoint{ /var } \
+# .\
+# 5369 50 5369 xfs \
+# $defaultignore{ } \
+# $lvmok{ } \
+# in_vg{ vg_system } \
+# device{ /dev/sda } \
+# lv_name{ lv_usr } \
+# method{ format }\
+# format{ } \
+# use_filesystem{ } \
+# filesystem{ xfs }\
+# mountpoint{ /usr } \
+# .\
+# 3221 50 3221 xfs \
+# $defaultignore{ } \
+# $lvmok{ } \
+# in_vg{ vg_system } \
+# device{ /dev/sda } \
+# lv_name{ lv_tmp } \
+# method{ format }\
+# format{ } \
+# use_filesystem{ } \
+# filesystem{ xfs }\
+# mountpoint{ /tmp } \
+# .\
+# 3221 50 3221 xfs \
+# $defaultignore{ } \
+# $lvmok{ } \
+# in_vg{ vg_system } \
+# device{ /dev/sda } \
+# lv_name{ lv_opt } \
+# method{ format }\
+# format{ } \
+# use_filesystem{ } \
+# filesystem{ xfs }\
+# mountpoint{ /opt } \
+# .\
+# 4295 90 4295 linux-swap \
+# in_vg{ vg_system } \
+# device{ /dev/sdb } \
+# lv_name{ lv_swap }
+# method{ swap } format{ } \
+# . 
+d-i partman-auto/disk string /dev/sda
+d-i partman-auto/method string lvm
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman-lvm/confirm boolean true
+d-i partman-auto/purge_lvm_from_device boolean true
+# d-i partman-auto-lvm/guided_size string max
+d-i partman-auto-lvm/new_vg_name string vg_system
+d-i partman-auto/expert_recipe string \
+    boot-root :: \
+        1075 1075 1075 xfs \
+        $primary{ } $bootable{ } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /boot } \
+    . \
+    5369 5369 5369 xfs \
+        $lvmok{ } \
+        lv_name{ lv_system } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ / } \
+    . \
+    5369 5369 5369 xfs \
+        $lvmok{ } \
+        lv_name{ lv_var } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /var } \
+    . \
+    5369 5369 5369 xfs \
+        $lvmok{ } \
+        lv_name{ lv_usr } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /usr } \
+    . \
+    3221 3221 3221 xfs \
+        $lvmok{ } \
+        lv_name{ lv_tmp } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /tmp } \
+    . \
+    3221 3221 3221 xfs \
+        $lvmok{ } \
+        lv_name{ lv_opt } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /opt } \
+    . \
+    1100 1100 1100 xfs \
+        $lvmok{ } \
+        lv_name{ lv_home } \
+        method{ format } \
+        format{ } \
+        use_filesystem{ } \
+        filesystem{ xfs } \
+        mountpoint{ /home } \
+    . \
+    4294 4294 4294 xfs \
+        $lvmok{ } \
+        lv_name{ lv_swap } \
+        method{ swap } \
+        format{ } \
+    . \
+        1 1 1 xfs \
+        $lvmok{ } \
+        lv_name{ lv_unassigned } \
+    . 
+
+d-i partman-lvm/confirm boolean true
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman-lvm/confirm_nooverwrite boolean true
+d-i partman-md/confirm_nooverwrite boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm_nooverwrite boolean true
+d-i partman/confirm boolean true
+d-i partman/confirm_write_new_label boolean true
+d-i partman/confirm_write_changes_to_disks_and_configure_lvm boolean true
+# Disable confirmation prompt for writing changes to disks
+d-i partman/confirm_write_new_label boolean true
+# Disable warning about no mount point specified for filesystems
+d-i partman-basicfilesystems/no_mount_point boolean true
+d-i partman/choose_partition \
+select Finish partitioning and write changes to disk
+
+### apt
+d-i apt-setup/use_mirror boolean true
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+tasksel tasksel/first multiselect
+d-i pkgsel/include string openssh-server build-essential
+d-i pkgsel/upgrade select full-upgrade
+popularity-contest popularity-contest/participate boolean false
+
+### grub
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean false
+d-i grub-installer/bootdev string /dev/sda
+
+d-i finish-install/keep-consoles boolean true
+#d-i preseed/late_command string echo 'administrator ALL=(ALL:ALL) NOPASSWD: ALL' > /target/etc/sudoers.d/administrator
+# Run a late_command to create a sudoers file for myuser
+d-i preseed/late_command string \
+    echo "administrator ALL=(ALL) NOPASSWD:ALL" > /target/etc/sudoers.d/administrator ; \
+    chmod 0440 /target/etc/sudoers.d/administrator
+d-i finish-install/reboot_in_progress note
+
+#d-i debian-installer/exit/halt boolean true
+#d-i debian-installer/exit/poweroff boolean true
+#d-i preseed/late_command string apt install curl; \
+#curl http://10.0.0.85/ansible.sh -o /root/ansible.sh; \
+#bash /root/ansible.sh

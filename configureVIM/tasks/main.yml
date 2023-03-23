@@ -1,0 +1,27 @@
+---
+# tasks file for configureVIM
+
+- name: "is vim installed in its latest version ?"
+  ansible.builtin.apt:
+    name: vim
+    state: latest
+
+- name: find colors parent
+  ansible.builtin.shell: "ls -d /usr/share/vim/vim*/ 2> /dev/null"
+  register: vimNumber
+  ignore_errors: true 
+
+- name: get molokai
+  ansible.builtin.copy:
+    src: vimcolours 
+    dest: "{{ vimNumber.stdout }}colors/molokai.vim"
+    mode: '0655'
+
+- name: apply molokai
+  ansible.builtin.template:
+    src: vimrc.j2
+    dest: /etc/vim/vimrc.local
+    owner: root
+    group: root
+    mode: '0655'
+

@@ -1,0 +1,7 @@
+if [[ "$(readlink /proc/$$/exe)" =~ "bash" ]]; then
+    PROMPT_COMMAND="history -w";
+    export HISTTIMEFORMAT="%d/%m/%y %T ";
+    export HISTSIZE="10000";
+    export HISTFILZESIZE="10000";
+    export HISTCONTROL="ignoreboth";
+fi

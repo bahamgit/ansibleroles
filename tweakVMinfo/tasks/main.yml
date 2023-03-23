@@ -1,0 +1,68 @@
+---
+# tasks file for tweakVMinfo
+- name: remove cdrom in vm
+  ansible.builtin.lineinfile:
+    path: /etc/pve/qemu-server/{{ vm_idPKR }}.conf
+    regexp: '^ide2.*$'
+    line: ''
+
+- name: update description
+  ansible.builtin.blockinfile:
+    path: /etc/pve/qemu-server/{{ vm_idPKR }}.conf
+    block: |
+      # # {{ vm_namePKR  }}
+      #
+      # ## {{ osVM }}
+      #
+      # <details>
+      #   <summary> info VM </summary>
+      #
+      #      - node: {{ nodePKR }}
+      #      - id: {{ vm_idPKR }}
+      #      - name: {{ vm_namePKR }}
+      #      - cores: {{ cpuPKR }}
+      #      - memory: {{ memoryPKR }}
+      #      - bridge: {{ bridgePKR }}
+      # </details>
+      #
+      #
+      # <details>
+      #   <summary> network </summary>
+      #
+      #      - interface: {{ interfaceNetworkVM }}
+      #      - ip: {{ ipPKR }} - {{ maskPKR }}
+      #      - gw: {{ gwPKR }}
+      #      - dns: {{ dnsPKR }}
+      #      - hostname: {{ hostnamePKR }}
+      # </details>
+      #
+      #
+      # <details>
+      #   <summary> management </summary>
+      #
+      #      - managed by: {{ responsableVM }}   
+      #      - created: {{ ansible_date_time.date }}
+      #
+      # </details>
+
+- name: remove cdrom in vm
+  ansible.builtin.lineinfile:
+    path: /etc/pve/qemu-server/{{ vm_idPKR }}.conf
+    regexp: '^#Packer.*$'
+    line: ''
+
+- name: remove cdrom in vm
+  ansible.builtin.lineinfile:
+    path: /etc/pve/qemu-server/{{ vm_idPKR }}.conf
+    regexp: '^# BEGIN .*$'
+    line: ''
+
+- name: remove cdrom in vm
+  ansible.builtin.lineinfile:
+    path: /etc/pve/qemu-server/{{ vm_idPKR }}.conf
+    regexp: '^# END.*$'
+    line: ''
+
+- name: Sleep for 30 seconds and continue with play
+  ansible.builtin.wait_for: 
+    timeout: 30

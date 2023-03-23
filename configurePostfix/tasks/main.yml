@@ -1,0 +1,20 @@
+---
+# tasks file for configurePostfix
+
+- name: "is postfix installed in its latest version ?"
+  ansible.builtin.apt:
+    name: postfix
+    state: latest
+
+- name: "is postfix enabled and running ?"
+  ansible.builtin.service:
+    name: postfix
+    enabled: true
+    state: started
+
+- name: configure postfix
+  ansible.builtin.lineinfile:
+    path: /etc/postfix/main.cf
+    regexp: '^inet_protocols.*$'
+    line: inet_protocols = ipv4
+  notify: restart postfix

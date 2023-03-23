@@ -1,0 +1,45 @@
+---
+
+- name: set up and run packer
+  hosts: localhost
+  vars_files:
+    - /root/ansibleroles/vars.yml
+  remote_user: deb
+  become: yes
+  ignore_errors: yes
+  roles:
+    - facts
+    - packer
+    - cleanup
+
+- name: configure system
+  hosts: newvm
+  remote_user: ansible
+  become: yes
+  vars_files:
+    - vars.yml
+  roles:
+    - createAdminUser
+    - installPackages
+    - disableUFW
+    - configureHostname
+    - configureBash
+    - configureOpenVMTools
+    - configurePostfix
+    - configureCockpit
+    - configureNetwork
+    - configureResolveD
+    - configureSudoers
+    - configureSSH
+    - configureVIM
+    - removeLv
+    - reboot
+
+- name: "templates are bad for your health"
+  hosts: hypervisor
+  vars_files:
+    - /root/ansibleroles/vars.yml
+  remote_user: root
+  roles:
+    - sharedfacts
+    - tweakVMinfo

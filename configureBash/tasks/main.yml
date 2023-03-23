@@ -1,0 +1,32 @@
+---
+# tasks file for configureBash
+
+- name: configure bash aliases
+  ansible.builtin.copy:
+    src: bash_alias
+    dest: /etc/profile.d/bash_alias.sh
+    owner: root
+    group: root
+
+- name: create new root .bashrc 
+  ansible.builtin.copy:
+    src: bashrc_root_ubuntu
+    dest: /root/.bashrc
+    owner: root
+    group: root
+  when: ansible_os_family == 'Debian'
+
+- name: create new admin .bashrc
+  ansible.builtin.copy:
+    src: bashrc_admin_ubuntu
+    dest: /home/admin/.bashrc
+    owner: admin
+    group: admin
+  when: ansible_os_family == 'Debian'
+
+- name: configure bash history
+  ansible.builtin.copy:
+    src: bash_history
+    dest: /etc/profile.d/bash_history.sh
+    owner: root
+    group: root

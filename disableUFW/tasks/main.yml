@@ -1,0 +1,11 @@
+---
+# tasks file for disableUFW
+
+- name: "is UFW masked ?"
+  ansible.builtin.systemd:
+    name: ufw
+    state: stopped
+    masked: true
+    enabled: false
+  when: ansible_distribution == 'Ubuntu'
+  

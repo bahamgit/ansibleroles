@@ -1,0 +1,11 @@
+---
+all:
+  hosts:
+  children:
+    newvm:
+      hosts:
+        vm:
+          ansible_host: 10.0.0.111
+    hypervisor:
+      hosts:
+        proxmox.qhloud.com:

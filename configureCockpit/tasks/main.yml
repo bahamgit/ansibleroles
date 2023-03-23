@@ -1,0 +1,23 @@
+---
+# tasks file for configureCockpit
+
+- name: "cockpit is installed in latest version ?"
+  ansible.builtin.apt:
+    name:
+      - cockpit
+      - cockpit-storaged
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: "NetworkManager is disabled ?"
+  ansible.builtin.systemd:
+    name: NetworkManager.service
+    enabled: false
+    state: stopped
+  when: ansible_distribution == 'Ubuntu'
+
+- name: "cockpit is enabled ?"
+  ansible.builtin.systemd:
+    name: cockpit.service
+    enabled: true
