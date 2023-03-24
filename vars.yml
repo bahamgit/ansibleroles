@@ -1,5 +1,5 @@
 # VM General Settings
-vm_namePKR: "vm-packer"
+vm_namePKR: "Amad - Auto-Inst-Ubu"
 template_descriptionPKR: "Jure ca marche ?!"
 
 #VM OS Settings
@@ -27,7 +27,7 @@ ipPKR: "192.168.220.20"
 gwPKR: "192.168.220.1"
 maskPKR: "255.255.255.0"
 dnsPKR: "192.168.220.2"
-hostnamePKR: "Amad - Auto-Inst-Ubu"
+hostnamePKR: "ubuntu-auto-inst"
 
 #Identity
 userRealNamePKR: "Amadou BAH BODIE"
