@@ -70,4 +70,5 @@ build {
     script       = "/home/user-ansible/ansibleroles/packer/files/script.sh"
     pause_before = "10s"
   }
+# Je suis chaud
 }
