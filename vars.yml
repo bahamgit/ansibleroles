@@ -30,6 +30,7 @@ dnsPKR: "192.168.220.2"
 hostnamePKR: "Amad - Auto-Inst-Ubu"
 
 #Identity
+userRealNamePKR: "Amadou BAH BODIE"
 userPKR: "amad"
 mdpPKR: "sdfgh"
 mdpCryptPKR: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKTU4LbNRT7d441d9SA5yCzyUnSzveXs+aXUFgVcSN/TJ880HKoINpJGml1IoAIRbRIM5na8OUgNflPungvYHlY= user-ansible@ansible"
@@ -52,4 +53,4 @@ hostnameVM: "{{ hostnamePKR }}"
 CIDR: "192.168.220.20/24"
 
 # Responsable
-responsableVM: "jeanjacques"
+responsableVM: "palladu38"

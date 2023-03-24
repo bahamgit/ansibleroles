@@ -9,7 +9,7 @@
   ignore_errors: yes
   roles:
     - facts
-    # - packer
+    - packer
 #     - cleanup
 
 # - name: configure system
