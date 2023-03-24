@@ -25,13 +25,13 @@
     dest: /home/user-ansible/ansibleroles/packer/files/script.sh
   when: defdistro == 'debian' or defdistro == 'ubuntu'
 
-# - name: custom packer builder
-#   ansible.builtin.template:
-#     src: "/home/user-ansible/ansibleroles/packer/templates/packerVM{{ defdistro }}.pkr.hcl.j2"
-#     dest: "/home/user-ansible/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
-#     owner: user-ansible
-#     group: user-ansible 
-#     mode: '0600'
+- name: custom packer builder
+  ansible.builtin.template:
+    src: "/home/user-ansible/ansibleroles/packer/templates/packerVM{{ defdistro }}.pkr.hcl.j2"
+    dest: "/home/user-ansible/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
+    owner: user-ansible
+    group: user-ansible 
+    mode: '0600'
 
 # - name: "packer shell commands"
 #   ansible.builtin.command: "/usr/bin/packer build -on-error=abort /home/user-ansible/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
