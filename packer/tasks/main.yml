@@ -13,11 +13,11 @@
 #     dest: /var/www/html/preseed.cfg
 #   when: defdistro == 'debian'
 
-# - name: touch meta-data
-#   ansible.builtin.file:
-#     path: /var/www/html/meta-data
-#     state: touch
-#   when: defdistro == 'ubuntu'
+- name: touch meta-data
+  ansible.builtin.file:
+    path: /var/www/html/meta-data
+    state: touch
+  when: defdistro == 'ubuntu'
 
 # - name: custom script
 #   ansible.builtin.template:
