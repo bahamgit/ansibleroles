@@ -33,7 +33,7 @@ hostnamePKR: "Amad - Auto-Inst-Ubu"
 userRealNamePKR: "Amadou BAH BODIE"
 userPKR: "amad"
 mdpPKR: "sdfgh"
-mdpCryptPKR: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKTU4LbNRT7d441d9SA5yCzyUnSzveXs+aXUFgVcSN/TJ880HKoINpJGml1IoAIRbRIM5na8OUgNflPungvYHlY= user-ansible@ansible"
+mdpCryptPKR: "$6$oyKhvXCtMZdJXqob$3sbwPb1/QtQVLxa2uT/vaic2qgvZ6G4Ff2lqmb9mec9pYsPrxMscByfxY2MN/x4YWYiQS17Go6CZ8Gmt.ciB6."
 
 #SSH
 sshUserPKR: "amad"
@@ -41,7 +41,7 @@ sshMdpPKR: "{{ mdpPKR  }}"
 sshHostPKR: "{{ ipPKR }}"
 sshPortPKR: "22"
 sshCertPKR: "~/.ssh/id_ecdsa.pub"
-sshPubPKR: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCG4BENyc53hqaILHpFr9T8niHWiIBQgIYezjTzWXsHmZNSjEB9E8YJiZBaZIXZp73zwxO7yUd1nk5/dljaVXSNihZ6s/FUWZiD5K1ALFM2EOBjBq26ebP9D/U0GvoSuOF4MFYj/SwtSC8/gp6SHdUf/DgiVl6Qp239WFCuR7g4ZR25BE3xhNVwq9BvSC3mnpi3v1FUru3l9K5zEvr6b5gHi/spEEf3ueJZf9CCTrx/BJVQYRmTTTYlolSwAzimblIiZ60FBKK6bQ8UmpnlS46x6uzMz8CN/vFDKwbJiAd6aHh3Qn51VyDph/g+10PBRt+87YIs7xbwj67FArB8OkU9a5rTuuVcOMuOqrkGt3s82HhaypPZ3eONGhR5i4jNnS7cUBBQtwYJp4R1JrYVQzby0sDXXroIQeiQesjAvrfYRHkdlV6RYf+IJ3k8oQT2h7FKGkPuU3X74Xodz92CiwYmn5VkqZvk8jUsWFknLv0KoGmE1w8HdWgh4mk8S2sqWYc= root@packerAnsible"
+sshPubPKR: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKTU4LbNRT7d441d9SA5yCzyUnSzveXs+aXUFgVcSN/TJ880HKoINpJGml1IoAIRbRIM5na8OUgNflPungvYHlY= user-ansible@ansible"
 
 #Other
 scriptPKR1: "/home/user-ansible/ansibleroles/packer/files/script.sh"
