@@ -24,7 +24,7 @@ source "vsphere-iso" "vm-packer" {
 
   # Network settings
   network_adapters {
-    network = "Amad - DMZ"
+    network = "vmxnet3"
     network_card = "Amad - DMZ"
   }
   
