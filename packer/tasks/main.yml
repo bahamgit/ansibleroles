@@ -33,10 +33,10 @@
     group: user-ansible 
     mode: '0600'
 
-# - name: "packer shell commands"
-#   ansible.builtin.command: "/usr/bin/packer build -on-error=abort /home/user-ansible/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
+- name: "packer shell commands"
+  ansible.builtin.command: "/usr/bin/packer build -on-error=abort /home/user-ansible/ansibleroles/packer/files/packerVM{{ defdistro }}.pkr.hcl"
 
-# - name: Sleep for 30 seconds and continue with play
-#   ansible.builtin.wait_for: 
-#     timeout: 30
+- name: Sleep for 30 seconds and continue with play
+  ansible.builtin.wait_for: 
+    timeout: 30
 
