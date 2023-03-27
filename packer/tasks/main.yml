@@ -1,11 +1,11 @@
 ---
 # tasks file for packer
 
-- name: custom user-data 
-  ansible.builtin.template:
-    src: /home/user-ansible/ansibleroles/packer/templates/user-data.j2
-    dest: /var/www/html/user-data
-  when: defdistro == 'ubuntu'
+# - name: custom user-data 
+#   ansible.builtin.template:
+#     src: /home/user-ansible/ansibleroles/packer/templates/user-data.j2
+#     dest: /var/www/html/user-data
+#   when: defdistro == 'ubuntu'
 
 # - name: custom preseed 
 #   ansible.builtin.template:
