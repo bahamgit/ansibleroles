@@ -14,7 +14,7 @@
 
 - name: configure system
   hosts: ubuntu-auto-inst
-  remote_user: amad
+  remote_user: user-ansible
   become: yes
   vars_files:
     - /home/user-ansible/ansibleroles/vars.yml
