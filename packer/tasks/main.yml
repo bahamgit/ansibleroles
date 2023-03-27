@@ -3,7 +3,7 @@
 
 - name: custom user-data 
   ansible.builtin.template:
-    src: /home/user-ansible/ansibleroles/packer/templates/user-data.j2
+    src: /home/user-ansible/ansibleroles/packer/templates/user-data
     dest: /var/www/html/user-data
   when: defdistro == 'ubuntu'
 
