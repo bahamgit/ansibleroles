@@ -21,19 +21,19 @@
   roles:
     - createAdminUser
     - installPackages
-#     - disableUFW
-#     - configureHostname
-#     - configureBash
-#     - configureOpenVMTools
-#     - configurePostfix
-#     - configureCockpit
-#     - configureNetwork
-#     - configureResolveD
-#     - configureSudoers
-#     - configureSSH
-#     - configureVIM
-#     - removeLv
-#     - reboot
+    - disableUFW
+    - configureHostname
+    - configureBash
+    - configureOpenVMTools
+    - configurePostfix
+    - configureCockpit
+    - configureNetwork
+    - configureResolveD
+    - configureSudoers
+    - configureSSH
+    - configureVIM
+    - removeLv
+    - reboot
 
 # - name: "templates are bad for your health"
 #   hosts: hypervisor
