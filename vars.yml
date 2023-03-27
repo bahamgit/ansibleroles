@@ -48,7 +48,7 @@ scriptPKR1: "/home/user-ansible/ansibleroles/packer/files/script.sh"
 
 
 #VM variables
-encryptedPasswordVM: "$6$OhpXTzKG7IsH2C6G$jbeM9LzjSvABftmYUwCSyO6Szts7pJQodWACL3EDrGfYwV4C/6H/9TEDCu2SArviHZVBrsVWEjDn.MQL8ZUwl."
+encryptedPasswordVM: "$6$oyKhvXCtMZdJXqob$3sbwPb1/QtQVLxa2uT/vaic2qgvZ6G4Ff2lqmb9mec9pYsPrxMscByfxY2MN/x4YWYiQS17Go6CZ8Gmt.ciB6."
 hostnameVM: "{{ hostnamePKR }}"
 CIDR: "192.168.220.20/24"
 

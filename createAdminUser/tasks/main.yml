@@ -11,11 +11,11 @@
 
 - name: "has the administrator user been removed ?"
   ansible.builtin.user:
-    name: administrator
+    name: amad
     state: absent
     remove: yes
 
 - name: "has administrator's sudoers file been removed"
   ansible.builtin.file:
-    path: /etc/sudoers.d/administrator
+    path: /etc/sudoers.d/amad
     state: absent
