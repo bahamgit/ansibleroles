@@ -6,10 +6,10 @@
     path: /home/user-ansible/ansibleroles/packer/files/packerVM{{ distroiso }}.pkr.hcl
     state: absent
 
-# - name: remove custom user-data
-#   ansible.builtin.file:
-#     path: /var/www/html/user-data
-#     state: absent
+- name: remove custom user-data
+  ansible.builtin.file:
+    path: /var/www/html/user-data
+    state: absent
 
 - name: remove custom meta-data
   ansible.builtin.file:
@@ -23,5 +23,5 @@
 
 - name: remove custom script
   ansible.builtin.file:
-    path: /root/ansibleroles/packer/files/script.sh
+    path: /home/user-ansible/ansibleroles/packer/files/script.sh
     state: absent

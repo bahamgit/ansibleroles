@@ -13,11 +13,11 @@
     - cleanup
 
 # - name: configure system
-#   hosts: newvm
-#   remote_user: ansible
+#   hosts: ubuntu-auto-inst
+#   remote_user: user-ansible
 #   become: yes
 #   vars_files:
-#     - vars.yml
+#     - /home/user-ansible/ansibleroles/vars.yml
 #   roles:
 #     - createAdminUser
 #     - installPackages
