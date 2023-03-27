@@ -10,7 +10,7 @@
   roles:
     - facts
     - packer
-    - cleanup
+    # - cleanup
 
 # - name: configure system
 #   hosts: ubuntu-auto-inst
