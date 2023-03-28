@@ -7,11 +7,11 @@
     dest: /var/www/html/user-data
   when: defdistro == 'ubuntu'
 
-# - name: custom preseed 
-#   ansible.builtin.template:
-#     src: /home/user-ansible/ansibleroles/packer/templates/preseed.cfg.j2
-#     dest: /var/www/html/preseed.cfg
-#   when: defdistro == 'debian'
+- name: custom preseed 
+  ansible.builtin.template:
+    src: /home/user-ansible/ansibleroles/packer/templates/preseed.cfg.j2
+    dest: /var/www/html/preseed.cfg
+  when: defdistro == 'debian'
 
 - name: touch meta-data
   ansible.builtin.file:
