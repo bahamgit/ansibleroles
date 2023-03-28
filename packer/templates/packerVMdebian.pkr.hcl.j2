@@ -66,8 +66,8 @@ build {
 
     # Add additional provisioning scripts here
   # ...
-  # provisioner "shell" {
-  #   script       = "{{ scriptPKR1 }}"
-  #   pause_before = "10s"
-  # }
+  provisioner "shell" {
+    script       = "{{ scriptPKR1 }}"
+    pause_before = "10s"
+  }
 }
