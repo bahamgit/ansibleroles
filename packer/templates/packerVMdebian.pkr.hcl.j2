@@ -46,7 +46,7 @@ source "vsphere-iso" "vm-packer" {
   "<enter>"
   ] 
 
-  boot                      = "c"
+  # boot                      = "c"
   boot_wait                 = "5s"
   ssh_host = "{{ ipPKR }}"
   ssh_username = "{{ userPKR }}" 
@@ -57,7 +57,7 @@ source "vsphere-iso" "vm-packer" {
   ssh_certificate_file      = "{{ sshPubPKR }}"
 
 
-  task_timeout  = "30m"
+  # task_timeout  = "30m"
 }
 
 # Build Definition to create the VM Template
@@ -67,8 +67,8 @@ build {
 
     # Add additional provisioning scripts here
   # ...
-  provisioner "shell" {
-    script       = "{{ scriptPKR1 }}"
-    pause_before = "10s"
-  }
+  # provisioner "shell" {
+  #   script       = "{{ scriptPKR1 }}"
+  #   pause_before = "10s"
+  # }
 }
