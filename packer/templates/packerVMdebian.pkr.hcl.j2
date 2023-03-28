@@ -36,9 +36,8 @@ source "vsphere-iso" "vm-packer" {
   }
 
   # ISO configuration
-  iso_checksum = "{{ iso_checksumPKR }}"
+  iso_checksum = "{{ iso_checksumPKR }}"
   iso_url      = "{{ iso_url_PKR }}"
-  
   # PACKER Boot Commands
   boot_command = [
   "<wait><esc><wait5s>",

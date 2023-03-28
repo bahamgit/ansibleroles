@@ -2,14 +2,30 @@
 # tasks file for facts
 - name: setting facts
   ansible.builtin.set_fact:
-    tmpdistro: "{{ distroiso }}"
+    defdistro: "{{ distroiso }}"
 
-- name: setting distro fact to debian
-  ansible.builtin.set_fact:
-    defdistro: debian
-  when: tmpdistro == 'debian11net'
+# - name: setting distro fact to debian
+#   ansible.builtin.set_fact:
+#     defdistro: debian
+#   when: tmpdistro == 'debian11net'
 
-- name: setting distro fact to ubuntu
+# - name: setting distro fact to ubuntu
+#   ansible.builtin.set_fact:
+#     defdistro: ubuntu
+#   when: tmpdistro == 'ubuntuServ2204'
+
+- name: oskour ubuntu
   ansible.builtin.set_fact:
-    defdistro: ubuntu
-  when: tmpdistro == 'ubuntuServ2204'
+    iso_url_PKR: httpsubuntu
+  when: defdistro == 'ubuntu'
+
+
+- name: url debian
+  ansible.builtin.set_fact:
+    iso_url_PKR: "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso"
+  when: defdistro == 'debian'
+
+- name: url debian
+  ansible.builtin.set_fact:
+    iso_checksumPKR: "224cd98011b9184e49f858a46096c6ff4894adff8945ce89b194541afdfd93b73b4666b0705234bd4dff42c0a914fdb6037dd0982efb5813e8a553d8e92e6f51"
+  when: defdistro == 'debian'
