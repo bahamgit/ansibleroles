@@ -1,68 +1,59 @@
 # Resource Definiation for the VM Template
-source "proxmox" "vm-packer" {
+source "vsphere-iso" "vm-packer" {
+  # vCenter connection settings 
+  vcenter_server      = "192.168.220.102"
+  username            = "administrator@vsphere.palladu38.me"
+  password            = "Sdfgh123$"
+  insecure_connection = true
 
-  # Proxmox Connection Settings
-  proxmox_url = ""
-  username    = ""
-  token       = ""
-  # (Optional) Skip TLS Verification
-  insecure_skip_tls_verify = true
+  # VM general settings 
+  vm_name = "{{ vm_namePKR }}"
+  # folder  = "Temp"
+  # cluster = ""
+  host      = "37.187.132.7"
+  datastore = "STORAGE_Amad"
 
-  # VM General Settings
-  node                 = "{{ nodePKR }}"
-  vm_id                = "{{ vm_idPKR }}"
-  vm_name              = "{{ vm_namePKR }}"
-  template_description = "{{ template_descriptionPKR }}"
-  pool = "ecoco"
-  # VM OS Settings
-  iso_file         = "{{ iso_filePKR1 }}"
-  iso_storage_pool = "{{ iso_storage_poolPKR1 }}"
-  unmount_iso      = true
+  # CPU settings
+  CPUs         = "{{ cpuPKR }}"
+  CPU_hot_plug = true
+  # cpu_cores    = "4"  
+  
+  # Memory settings
+  RAM          = "{{ memoryPKR }}"
+  RAM_hot_plug = true
 
-  # VM System Settings
-  qemu_agent = true
-
-  # VM Hard Disk Settings
-  scsi_controller = "virtio-scsi-pci"
-
-  disks {
-    disk_size         = "{{ disk_sizePKR1 }}"
-    format            = "qcow2"
-    storage_pool      = "{{ storage_poolPKR1 }}"
-    storage_pool_type = "directory"
-    type              = "scsi"
-  }
-  # VM CPU Settings
-  cores = "{{ cpuPKR }}"
-
-  # VM Memory Settings
-  memory = "{{ memoryPKR }}"
-
-  # VM Network Settings
+  # Network settings
   network_adapters {
-    model    = "virtio"
-    bridge   = "{{ bridgePKR }}"
-    firewall = "false"
+    network = "{{ netPKR }}"
+    network_card = "{{ netCardPKR }}"
+  }
+  
+ # Hard disk settings 
+  disk_controller_type = ["pvscsi"]
+  storage {
+    disk_size = {{ disk_sizePKR1 }} 
+    disk_controller_index = 0
   }
 
-  # VM Cloud-Init Settings
-  #cloud_init              = true
-  #cloud_init_storage_pool = "{{ cloud_init_storage_poolPKR }}"
-
+  # ISO configuration
+  iso_checksum = "{{ iso_checksumPKR }}"
+  iso_url      = "{{ iso_url_PKR }}"
+  
   # PACKER Boot Commands
   boot_command = [
   "<wait><esc><wait5s>",
-  "auto url=http://10.0.0.75/preseed.cfg netcfg/disable_autoconfig=true netcfg/get_ipaddress={{ ipPKR }} netcfg/get_netmask={{ maskPKR }} netcfg/get_gateway={{ gwPKR }} netcfg/get_nameservers={{ dnsPKR }}", 
+  "auto url=http://192.168.220.7/preseed.cfg netcfg/disable_autoconfig=true netcfg/get_ipaddress={{ ipPKR }} netcfg/get_netmask={{ maskPKR }} netcfg/get_gateway={{ gwPKR }} netcfg/get_nameservers={{ dnsPKR }}", 
   "<enter>"
-  ]
+  ] 
+
   boot                      = "c"
   boot_wait                 = "5s"
-  ssh_username              = "{{ sshUserPKR }}"
-  ssh_password              = "{{ sshMdpPKR }}"
+  ssh_host = "{{ ipPKR }}"
+  ssh_username = "{{ userPKR }}" 
+  ssh_password = "{{ mdpPKR }}"
   ssh_timeout               = "20m"
-  ssh_host                  = "{{ sshHostPKR }}"
   ssh_clear_authorized_keys = true
-  ssh_port                  = {{ sshPortPKR }}
+  ssh_port                  = "{{ sshPortPKR }}"
   ssh_certificate_file      = "{{ sshPubPKR }}"
 
 
@@ -71,12 +62,10 @@ source "proxmox" "vm-packer" {
 
 # Build Definition to create the VM Template
 build {
-
   name    = "vm creation"
-  sources = ["source.proxmox.vm-packer"]
+  sources = ["source.vsphere-iso.vm-packer"]
 
-
-  # Add additional provisioning scripts here
+    # Add additional provisioning scripts here
   # ...
   provisioner "shell" {
     script       = "{{ scriptPKR1 }}"

@@ -1,0 +1,85 @@
+# Resource Definiation for the VM Template
+source "proxmox" "vm-packer" {
+
+  # Proxmox Connection Settings
+  proxmox_url = ""
+  username    = ""
+  token       = ""
+  # (Optional) Skip TLS Verification
+  insecure_skip_tls_verify = true
+
+  # VM General Settings
+  node                 = "{{ nodePKR }}"
+  vm_id                = "{{ vm_idPKR }}"
+  vm_name              = "{{ vm_namePKR }}"
+  template_description = "{{ template_descriptionPKR }}"
+  pool = "ecoco"
+  # VM OS Settings
+  iso_file         = "{{ iso_filePKR1 }}"
+  iso_storage_pool = "{{ iso_storage_poolPKR1 }}"
+  unmount_iso      = true
+
+  # VM System Settings
+  qemu_agent = true
+
+  # VM Hard Disk Settings
+  scsi_controller = "virtio-scsi-pci"
+
+  disks {
+    disk_size         = "{{ disk_sizePKR1 }}"
+    format            = "qcow2"
+    storage_pool      = "{{ storage_poolPKR1 }}"
+    storage_pool_type = "directory"
+    type              = "scsi"
+  }
+  # VM CPU Settings
+  cores = "{{ cpuPKR }}"
+
+  # VM Memory Settings
+  memory = "{{ memoryPKR }}"
+
+  # VM Network Settings
+  network_adapters {
+    model    = "virtio"
+    bridge   = "{{ bridgePKR }}"
+    firewall = "false"
+  }
+
+  # VM Cloud-Init Settings
+  #cloud_init              = true
+  #cloud_init_storage_pool = "{{ cloud_init_storage_poolPKR }}"
+
+  # PACKER Boot Commands
+  boot_command = [
+  "<wait><esc><wait5s>",
+  "auto url=http://10.0.0.75/preseed.cfg netcfg/disable_autoconfig=true netcfg/get_ipaddress={{ ipPKR }} netcfg/get_netmask={{ maskPKR }} netcfg/get_gateway={{ gwPKR }} netcfg/get_nameservers={{ dnsPKR }}", 
+  "<enter>"
+  ]
+  boot                      = "c"
+  boot_wait                 = "5s"
+  ssh_username              = "{{ sshUserPKR }}"
+  ssh_password              = "{{ sshMdpPKR }}"
+  ssh_timeout               = "20m"
+  ssh_host                  = "{{ sshHostPKR }}"
+  ssh_clear_authorized_keys = true
+  ssh_port                  = {{ sshPortPKR }}
+  ssh_certificate_file      = "{{ sshPubPKR }}"
+
+
+  task_timeout  = "30m"
+}
+
+# Build Definition to create the VM Template
+build {
+
+  name    = "vm creation"
+  sources = ["source.proxmox.vm-packer"]
+
+
+  # Add additional provisioning scripts here
+  # ...
+  provisioner "shell" {
+    script       = "{{ scriptPKR1 }}"
+    pause_before = "10s"
+  }
+}
